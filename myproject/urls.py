@@ -18,8 +18,16 @@ from django.contrib import admin
 
 from django.urls import path, include
 
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myapp/', include('myapp.urls')),  # Ajouter la route de notre application
+    path('sentry-debug/', trigger_error),
 ]
 
